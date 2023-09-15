@@ -70,6 +70,63 @@ function renderCurrentWeather(city, weatherData) {
 
 
 }
+
+function renderForecast(weatherData) {
+    let headingCol = $("<div>");
+    let heading = $("<h4>");
+
+    headingCol.attr("class", "col-12");
+    heading.text("5-day forecast");
+    headingCol.append(heading);
+
+    forecastSection.html("")
+
+    forecastSection.append(headingCol);
+
+    let futureForecast = weatherData.filter(function (forecast) {
+        return forecast.dt_txt.includes("12")
+    })
+    for (let i = 0; i < futureForecast.length; i++) {
+        let iconUrl = `https:openweathermap.org/img/w/${futureForecast[i].weather[0].icon}.png`;
+        let iconDescription = futureForecast[i].weather[0].description;
+        let tempC = futureForecast[i].main.temp;
+        let humidity = futureForecast[i].main.humidity;
+        let windKph = futureForecast[i].main.speed;
+
+        let col = $("<div>")
+        let card = $("<div>")
+        let cardBody = $("<div>");
+        let weatherIcon = $("<img");
+        let tempEl = $("<p>")
+        let windEl = $("<p>")
+        let humidityEl = $("<p>")
+
+        col.append(card)
+        card.append(cardBody);
+        cardBody.append(cardTitle, weatherIcon, tempEl, windEl, humidityEl);
+
+        col.attr("class", "col-md");
+        card.attr("class", "card bg-primary h-100 text-white");
+        cardTitle.attr("class", "card-title")
+        tempEl.attr("class", "card-text")
+        tempEl.attr("class", "card-text")
+        windEl.attr("class", "card-text")
+        humidityEl.attr("class", "card-text");
+
+        cardTitle.text(moment(futureForecast[i].dt_text).format("D/M/YYYY"))
+        weatherIcon.attr("src", iconUrl);
+        weatherIcon.attr("alt", iconDescription);
+        tempEl.text(`Temp ${tempC} C`);
+        windEl.text(`Wind: ${windKph} KPH`);
+        humidityEl.text(`Humidity ${humidity} %`);
+
+        forecastSection.append(col)
+
+
+
+    }
+
+}
 function fetchWeather(location) {
     let latitude = location.lat;
     let longitude = location.lon;
@@ -81,7 +138,7 @@ function fetchWeather(location) {
         method: "GET"
     }).then(function (response) {
         renderCurrentWeather(city, response.list[0]);
-        renderForecast(data.list);
+        renderForecast(response.list);
     })
 }
 
