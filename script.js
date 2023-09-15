@@ -102,19 +102,21 @@ function renderForecast(weatherData) {
         let tempEl = $("<p>");
         let windEl = $("<p>");
         let humidityEl = $("<p>");
+        let dateEl = $("<p>"); // Create a date element
 
         col.append(card);
         card.append(cardBody);
-        cardBody.append(tempEl, windEl, humidityEl);
+        cardBody.append(weatherIcon, dateEl, tempEl, windEl, humidityEl); // Reorder elements
 
         col.attr("class", "col-md");
         card.attr("class", "card bg-primary h-100 text-white");
         tempEl.attr("class", "card-text");
         windEl.attr("class", "card-text");
         humidityEl.attr("class", "card-text");
+        dateEl.attr("class", "card-text"); // Apply styles to dateEl
 
-        cardBody.prepend(weatherIcon); // Add the weather icon at the beginning
-        cardBody.append(tempEl, windEl, humidityEl);
+        // Set the date content
+        dateEl.text(dateFormatted);
 
         tempEl.text(`Temp: ${tempC} °C`);
         windEl.text(`Wind: ${windKph} Km/H`);
