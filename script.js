@@ -1,7 +1,8 @@
+// Defining the base URL and API key for the weather API
 const weatherAPIURL = "https://api.openweathermap.org";
 const weatherAPIKEY = "c875f84aa04328bd581f57209854f1e5";
 
-// Define variables to store DOM elements
+// Defining variables to store DOM elements
 let searchForm = $("#search-form");
 let searchInput = $("#search-input");
 let todaySection = $("#today");
@@ -11,7 +12,10 @@ let searchHistoryContainer = $("#history");
 
 // Function to render the search history
 function renderSearchHistory() {
+    // Clear the search history container
     searchHistoryContainer.html("");
+
+    // Looping through the search history and creating buttons for each city
     for (let i = 0; i < searchHistory.length; i++) {
         let btn = $("<button>");
         btn.attr("type", "button");
@@ -24,21 +28,26 @@ function renderSearchHistory() {
 
 // Function to append a city to the search history
 function appendSearchHistory(search) {
+
+    // Checking if the city is already in the search history
     if (searchHistory.indexOf(search) !== -1) {
         return;
     }
+    // Adding the city to the search history and update local storage
     searchHistory.push(search);
     localStorage.setItem("search-history", JSON.stringify(searchHistory));
+    // Rendering the updated search history
     renderSearchHistory();
 }
 
 // Function to render the current weather
 function renderCurrentWeather(city, weatherData) {
+    // Getting the current date and weather data
     let date = moment().format("MMMM Do YYYY");
     let tempC = weatherData["main"]["temp"];
     let windKph = weatherData["wind"]["speed"];
     let humidity = weatherData["main"]["humidity"];
-
+    // Creating elements for displaying current weather
     let iconUrl = `https://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`;
     let iconDescription = weatherData.weather[0].description || weatherData[0].main;
     let card = $("<div>");
@@ -48,7 +57,7 @@ function renderCurrentWeather(city, weatherData) {
     let tempEl = $("<p>");
     let windEl = $("<p>");
     let humidityEl = $("<p>");
-
+    // Adding classes and attributes to elements
     card.attr("class", "card");
     cardBody.attr("class", "card-body");
     card.append(cardBody);
@@ -56,7 +65,7 @@ function renderCurrentWeather(city, weatherData) {
     tempEl.attr("class", "card-text");
     windEl.attr("class", "card-text");
     humidityEl.attr("class", "card-text");
-
+    // Setting text and attributes for elements
     heading.text(`${city} (${date})`);
     weatherIcon.attr("src", iconUrl);
     weatherIcon.attr("alt", iconDescription);
@@ -66,7 +75,7 @@ function renderCurrentWeather(city, weatherData) {
     windEl.text(`Wind: ${windKph} Km/H`);
     humidityEl.text(`Humidity: ${humidity} %`);
     cardBody.append(heading, tempEl, windEl, humidityEl);
-
+    // Appending elements to the current weather section
     todaySection.html("");
     todaySection.append(card);
 }
@@ -80,14 +89,17 @@ function renderForecast(weatherData) {
     heading.text("5-day Forecast");
     headingCol.append(heading);
 
+
+    // Clearing the forecast section
     forecastSection.html("");
 
+    // Appending the heading to the forecast section
     forecastSection.append(headingCol);
-
+    // Filtering the weather data to get forecasts for 12:00 PM
     let futureForecast = weatherData.filter(function (forecast) {
         return forecast.dt_txt.includes("12:00:00");
     });
-
+    // Looping through the filtered forecast data and creating cards for each day
     for (let i = 0; i < futureForecast.length; i++) {
         let iconUrl = `https://openweathermap.org/img/w/${futureForecast[i].weather[0].icon}.png`;
         let iconDescription = futureForecast[i].weather[0].description;
@@ -102,11 +114,11 @@ function renderForecast(weatherData) {
         let tempEl = $("<p>");
         let windEl = $("<p>");
         let humidityEl = $("<p>");
-        let dateEl = $("<p>"); // Create a date element
+        let dateEl = $("<p>"); // Creating a date element
 
         col.append(card);
         card.append(cardBody);
-        cardBody.append(dateEl, weatherIcon, tempEl, windEl, humidityEl); // Reorder elements
+        cardBody.append(dateEl, weatherIcon, tempEl, windEl, humidityEl);
 
         col.attr("class", "col-md");
         card.attr("class", "card bg-primary h-100 text-white");
@@ -115,7 +127,7 @@ function renderForecast(weatherData) {
         humidityEl.attr("class", "card-text");
         dateEl.attr("class", "card-text"); // Apply styles to dateEl
 
-        // Set the date content
+        // Setting the date content
         dateEl.text(dateFormatted);
 
         tempEl.text(`Temp: ${tempC} °C`);
@@ -190,7 +202,7 @@ function clickSearchHistory(event) {
     searchInput.val("");
 }
 
-// Initialize search history and set up event listeners
+// Initialising search history and set up event listeners
 initializeHistory();
 searchForm.on("submit", submitSearchForm);
 searchHistoryContainer.on("click", clickSearchHistory);
