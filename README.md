@@ -39,7 +39,7 @@ This project is licensed under the MIT License.
 
 1. The URL of the GitHub repository: https://github.com/Jeshikha/weather-dashboard
 
-2. The URL of the functional, deployed application on GitHub Pages: 
+2. The URL of the functional, deployed application on GitHub Pages: https://jeshikha.github.io/weather-dashboard/
 
 ### Screenshots of Deployed App
 
