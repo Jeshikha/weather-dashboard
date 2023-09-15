@@ -3,17 +3,18 @@
 The Weather Dashboard App is a web-based weather forecast application that allows users to retrieve current and future weather information for multiple cities. Users can plan their trips and outdoor activities by checking the weather conditions for different locations. This application uses the OpenWeatherMap API to fetch weather data and displays it in a user-friendly interface.
 
 ### Features of the App
-• Users can search for a city to view the current weather conditions and a 5-day forecast.
-• The application displays the city name, date, weather icon, temperature, humidity, and wind speed for the current weather.
-• The 5-day forecast includes the date, weather icon, temperature, and humidity for each day.
-• Search history is saved, allowing users to quickly access weather information for previously searched cities.
-• The application uses localStorage to persist search history data even after refreshing the page.
+* Users can search for a city to view the current weather conditions and a 5-day forecast.
+* The application displays the city name, date, weather icon, temperature, humidity, and wind speed for the current weather.
+* The 5-day forecast includes the date, weather icon, temperature, and humidity for each day.
+* Search history is saved, allowing users to quickly access weather information for previously searched cities.
+* The application uses localStorage to persist search history data even after refreshing the page.
 
 ### Resources and Tools
 HTML and CSS to define the structure and style, while JavaScript and jQuery provide the app's functionality, and moment.js helps manage date and time-related operations.
 * VScode
 * GitHub
 * Google Search
+* Bootstrap for CSS
 * jQuery
 * moment.js
 * OpenWeatherMap API
