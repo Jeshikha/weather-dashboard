@@ -34,7 +34,7 @@ function appendSearchHistory(search) {
 
 // Function to render the current weather
 function renderCurrentWeather(city, weatherData) {
-    let date = moment().format("D/M/YYYY");
+    let date = moment().format("MMMM Do YYYY");
     let tempC = weatherData["main"]["temp"];
     let windKph = weatherData["wind"]["speed"];
     let humidity = weatherData["main"]["humidity"];
@@ -77,7 +77,7 @@ function renderForecast(weatherData) {
     let heading = $("<h4>");
 
     headingCol.attr("class", "col-12");
-    heading.text("5-day forecast");
+    heading.text("5-day Forecast");
     headingCol.append(heading);
 
     forecastSection.html("");
@@ -94,7 +94,7 @@ function renderForecast(weatherData) {
         let tempC = futureForecast[i].main.temp;
         let humidity = futureForecast[i].main.humidity;
         let windKph = futureForecast[i].wind.speed;
-
+        let dateFormatted = moment(futureForecast[i].dt_txt).format("D-MMM-YYYY");
         let col = $("<div>");
         let card = $("<div>");
         let cardBody = $("<div>");
