@@ -1,4 +1,4 @@
-/* Style the search button  */
+/* Style the search button */
 button#search-button.btn-primary {
     background-color: #007bff !important;
     color: #fff !important;
@@ -8,7 +8,7 @@ button#search-button.btn-primary {
     cursor: pointer !important;
 }
 
-/* Style the history buttons  */
+/* Style the history buttons */
 .btn-history.btn-primary {
     background-color: #ccc !important;
     color: #333 !important;
@@ -19,9 +19,9 @@ button#search-button.btn-primary {
     margin-right: 5px !important;
 }
 
-/* Style the weather card with  */
+/* Style the weather card with */
 .card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2) !important;
+    box-shadow: 0 4px 8px 0 rgba(22, 3, 228, 0.2) !important;
     margin-bottom: 20px !important;
 }
 
@@ -40,7 +40,7 @@ button#search-button.btn-primary {
     padding: 1rem !important;
 }
 
-/* Style the forecast card  */
+/* Style the forecast card */
 .card.bg-primary {
     background-color: #2f2b53 !important;
     color: #fff !important;
@@ -48,48 +48,49 @@ button#search-button.btn-primary {
     margin: 0 auto !important;
 }
 
+/* Center-align the icons vertically */
+.card.bg-primary img {
+    display: block !important;
+    margin: 0 auto !important;
+}
+
 /* Style the forecast card on hover */
 .card.bg-primary:hover {
     background-color: #89a132 !important;
+}
 
-    /* Center-align the icons horizontally */
+/* Center-align the icons horizontally */
+.card.bg-primary:hover img {
+    display: block !important;
+    margin: 0 auto !important;
 }
 
 /* Increase spacing between history buttons and add a space line */
 .btn-history {
     margin-right: 10px !important;
-    /* Adjust the margin as needed for spacing */
     margin-bottom: 5px !important;
-    /* Add margin below each button */
     border: 1px solid #ccc !important;
-    /* Add a border to separate buttons */
     padding: 5px 10px !important;
-    /* Adjust padding for button size */
 }
 
 /* Change background and text color on hover */
 .btn-history:hover {
     background-color: #3a3e44 !important;
-    /* Change background color on hover */
     color: #fff !important;
-    /* Change text color on hover */
 }
 
 /* Stylish search button */
 #search-button {
     background-color: #007bff !important;
-    /* Change to your desired button color */
     color: #fff !important;
     border: none !important;
     padding: 10px 20px !important;
     border-radius: 5px !important;
     cursor: pointer !important;
     transition: background-color 0.3s !important;
-    /* Add hover effect */
 }
 
 /* Hover effect for the search button */
 #search-button:hover {
     background-color: #0056b3 !important;
-    /* Change to your desired hover color */
 }

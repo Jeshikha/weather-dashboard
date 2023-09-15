@@ -106,7 +106,7 @@ function renderForecast(weatherData) {
 
         col.append(card);
         card.append(cardBody);
-        cardBody.append(weatherIcon, dateEl, tempEl, windEl, humidityEl); // Reorder elements
+        cardBody.append(dateEl, weatherIcon, tempEl, windEl, humidityEl); // Reorder elements
 
         col.attr("class", "col-md");
         card.attr("class", "card bg-primary h-100 text-white");
